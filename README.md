@@ -1,20 +1,22 @@
 # TG-GAN
-Synthetic EEG for Motor Imagery Tasks using Transformer-Guided Generative Adversarial Network
-Abstract—Electroencephalogram (EEG) signals are essential
-for brain–computer interface (BCI) systems and clinical research.
-However, the limited availability of EEG data constrains the
-performance of deep learning models. While existing genera
-tive models can replicate time-domain patterns, they often fail
-to generate complex temporal features. This study introduces
-a Transformer-Guided Generative Adversarial Network (TG
-GAN), which integrates adversarial learning with self-attention
-mechanisms to generate synthetic EEG signals that capture both
-temporal and frequency domain features. Experiments conducted
-on the BCI Competition IV 2b dataset indicate that TG-GAN
-produces realistic signals with statistical properties, temporal
-dynamics, and spectral patterns comparable to real data in the
-µ (8–13 Hz) band. Additionally, Fr´ echet Distance scores confirm
-the distributional similarity between synthetic and real signals.
-These findings indicate that TG-GAN is a promising approach
-for augmenting EEG datasets and enhancing model training in
-BCI applications.
+Motor imagery-based brain-computer interfaces (BCIs) face challenges due to the 
+limitation of good-quality EEG data, which makes it difficult to train accurate 
+classification models. This thesis presents a Transformer-guided Generative Adversarial 
+Network (TG-GAN) to generate realistic motor imagery EEG signals and help overcome 
+data shortages in BCI applications. The model uses Transformer attention along with 
+adversarial training to learn both short-term and long-term patterns in EEG signals. It 
+was trained on data from three EEG channels (C3, Cz, C4), focusing on left- and right
+hand motor imagery tasks. A well-organized preprocessing was done including 
+segmentation, normalization, and data reshaping ensures the model receives consistent 
+and clean input. The generated EEG data was evaluated using different methods, such as 
+basic statistics like average value and variation, checking brainwave activity in important 
+frequency ranges (alpha, beta and gamma bands), measuring how well signals from 
+different channels are related, and using a similarity score called Fréchet Inception 
+Distance (FID). The results show that TG-GAN can reproduce key features of motor 
+imagery EEG, especially activity in the beta frequency band (13–30 Hz) and lower FID 
+for some generated data. However, the generated signals had slightly higher variance, 
+lower power at higher frequencies, and stronger-than-normal correlation between 
+channels, which are not typically seen in real EEG. The study presents a promising 
+generative model for augmenting EEG data in low-data settings. Future work could focus 
+on class-specific generation, subject-based modeling, and testing TG-GAN data in real 
+BCI classification tasks.
