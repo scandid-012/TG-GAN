@@ -1,7 +1,7 @@
 # TG-GAN
 Motor imagery-based brain-computer interfaces (BCIs) face challenges due to the 
 limitation of good-quality EEG data, which makes it difficult to train accurate 
-classification models. This thesis presents a Transformer-guided Generative Adversarial 
+classification models. This study presents a Transformer-guided Generative Adversarial 
 Network (TG-GAN) to generate realistic motor imagery EEG signals and help overcome 
 data shortages in BCI applications. The model uses Transformer attention along with 
 adversarial training to learn both short-term and long-term patterns in EEG signals. It 
