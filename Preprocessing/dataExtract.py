@@ -6,8 +6,8 @@ import os
 import glob
 import mne
 import numpy as np
-import pandas as pd # Optional, for managing metadata
-import traceback # For detailed error reporting
+import pandas as pd 
+import traceback 
 
 print(f"MNE version: {mne.__version__}")
 
@@ -87,7 +87,6 @@ for gdf_file_path in all_gdf_files:
         all_eeg_data_list.append(eeg_data)
         # For metadata, it's safer to get channel names from the successfully picked object if possible
         # However, `raw_eeg_picked.ch_names` is not directly returned by the function.
-        # For now, we'll assume the number of channels in eeg_data.shape[0] corresponds to our target channels.
         file_metadata.append({
             'filename': os.path.basename(gdf_file_path),
             'n_eeg_channels_extracted': eeg_data.shape[0],
@@ -109,3 +108,20 @@ if all_eeg_data_list:
      print(f"\nShape of EEG data from the first successfully extracted file: {all_eeg_data_list[0].shape}")
 else:
     print("No EEG data was extracted from any file.")
+#shape
+# Check the number of successfully processed files/datasets
+print(f"Number of datasets in all_eeg_data_list: {len(all_eeg_data_list)}")
+
+# Print the shape of each dataset (or a sample)
+print("\nShapes of the first few datasets in the list:")
+for i, eeg_data_array in enumerate(all_eeg_data_list[:5]): # Print shapes for the first 5
+    print(f"Dataset {i} (from file: {file_metadata[i]['filename']}): shape {eeg_data_array.shape}")
+    if eeg_data_array.shape[0] != 3:
+        print(f"  WARNING: Dataset {i} does not have 3 channels!")
+
+# If you want to check all of them (can be verbose if many files):
+# print("\nShapes of all datasets in the list:")
+# for i, eeg_data_array in enumerate(all_eeg_data_list):
+#     print(f"Dataset {i} (from file: {file_metadata[i]['filename']}): shape {eeg_data_array.shape}")
+#     if eeg_data_array.shape[0] != 3:
+#         print(f"  WARNING: Dataset {i} does not have 3 channels!")
